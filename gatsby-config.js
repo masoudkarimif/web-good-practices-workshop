@@ -6,7 +6,7 @@
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://whilenext.com`,
+    siteUrl: `https://uofc-web-workshop.netlify.app`,
   },
   plugins: [
     {
