@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
+const emoji = require(`remark-emoji`)
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://uofc-web-workshop.netlify.app`,
@@ -122,6 +124,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        remarkPlugins: [emoji],
         defaultLayouts: {
           posts: require.resolve("./src/components/layout.js"),
           default: require.resolve("./src/components/layout.js"),
