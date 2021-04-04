@@ -13,7 +13,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "UA-33158107432-1",
+        trackingId: "G-SD37SN7K97",
         // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: true,
         // Setting this parameter is optional
@@ -128,13 +128,5 @@ module.exports = {
         },
       },
     },
-
-    // {
-    //  resolve: `gatsby-source-filesystem`,
-    //  options: {
-    // 	name: `markdown-pages`,
-    // 	path: `${__dirname}/src/markdown-pages`,
-    //  },
-    // },
   ],
 }
