@@ -1,11 +1,56 @@
 ---
 title: "Rule #3"
+description: "Use `useRef` when you want to access the DOM, or keep a value around without re-rendering the page!"
 path: "/rule-3"
 ---
 
-import Button from "../components/button.js"
-import GoTo from "../components/changePage.js"
+import GoTo from "../components/changePage"
 
-# 3. Using `useRef`
+# 3. Use `useRef` when you want to access the DOM, or keep a value around without re-rendering the page!
+
+## 1. Accessing the DOM
+
+```jsx
+function TextInputWithFocusButton() {
+  const inputEl = useRef(null)
+  const onButtonClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus()
+  }
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  )
+}
+```
+
+source: [React](https://reactjs.org/docs/hooks-reference.html#useref)
+
+## 2. Keep a value
+
+```jsx
+import React, { useState, useEffect, useRef } from "react"
+
+const Component = () => {
+  const [state, setState] = useState(0)
+  const firstTime = useRef(true)
+
+  useEffect(() => {
+    if (!firstTime.current) {
+      // Run the effect.
+    } else {
+      firstTime.current = false
+    }
+  }, [state])
+
+  return <div></div>
+}
+```
+
+source: [Markoskon.com](https://markoskon.com/the-difference-between-refs-and-variables/)
+
+## The difference between using `useRef` and using a JavaScript varibale, is that `useRef` won't be shared between instances of the same component, but variable will!
 
 <GoTo rule="4" />
