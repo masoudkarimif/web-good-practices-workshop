@@ -1,11 +1,63 @@
 ---
 title: "Rule #4"
+description: "Use Less or Sass for your CSS"
 path: "/rule-4"
 ---
 
-import Button from "../components/button.js"
 import GoTo from "../components/changePage.js"
 
-# 4. Using Less or Sass
+# 4. Use LESS or Sass for your CSS!
+
+> Syntactically Awesome Stylesheets (Sass) and Leaner CSS (LESS) are both CSS preprocessors. They are special stylesheet extensions that make designing easier and more efficient. Both Sass and LESS compile into CSS stylesheets so that browsers can read them. This is a necessary step because modern browsers cannot read .sass or .less file types.
+
+source: [thebalancecareers](https://www.thebalancecareers.com/sass-vs-less-2071912)
+
+### Long story short, they let use variables, mixins, nesting and more for your CSS!
+
+<br />
+
+### LESS example:
+
+```css
+//variables
+@width: 10px;
+@height: @width + 10px;
+
+#header {
+  width: @width;
+  height: @height;
+}
+
+//mixins
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+#menu a {
+  color: #111;
+  .bordered();
+}
+.post a {
+  color: red;
+  .bordered();
+}
+
+//nesting
+#header {
+  color: black;
+  .navigation {
+    font-size: 12px;
+  }
+  .logo {
+    width: 300px;
+  }
+}
+```
+
+source: [LESS](http://lesscss.org/)
+
+### Sass also provides a lot of the same functionalities as LESS. Check them out [here](https://sass-lang.com/guide).
+
+### Wondering which one is better? take a look at this article from [CSS Tricks](https://css-tricks.com/sass-vs-less/).
 
 <GoTo rule="5" />
