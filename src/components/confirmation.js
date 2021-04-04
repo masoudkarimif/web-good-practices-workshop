@@ -5,9 +5,9 @@ import {
 } from "./good-bad-practice-headers"
 
 const dummyProfile = {
-  name: "John Doe",
-  age: "45",
-  address: "Earth",
+  name: "Ingenuity",
+  type: "Helicopter",
+  address: "Mars",
 }
 
 const style = {
