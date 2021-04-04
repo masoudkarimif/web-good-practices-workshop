@@ -1,0 +1,53 @@
+---
+title: "Rule #10"
+description: "Rule #10: Get confirmation before performing irreversible actions!"
+path: "/rule-10"
+---
+
+import GoTo from "../components/changePage"
+
+# 10. Consider using TypeScript, especially when you're working in a big group!
+
+> JavaScript is a dynamically typed language which means that the types are checked, and datatype errors are spotted only at the runtime.
+
+> TypeScript introduces optional strong static typing: Once declared, a variable doesn’t change its type and can take only certain values. The compiler alerts developers to type-related mistakes, so they have no opportunity to hit the production phase. This results in less error-prone code and better performance during execution.
+
+source: [altexsoft](https://www.altexsoft.com/blog/typescript-pros-and-cons/)
+
+<br />
+
+### You can start a React project with TypeScript using the following command:
+
+```bash
+npx create-react-app my-app --template typescript
+```
+
+### Example:
+
+```jsx
+import React from "react"
+
+interface Props {
+  name: string;
+  color: string;
+}
+
+type OtherProps = {
+  name: string,
+  color: string,
+}
+
+// Notice here we're using the function declaration with the interface Props
+function Heading({ name, color }: Props): React.ReactNode {
+  return <h1>My Website Heading</h1>
+}
+
+// Notice here we're using the function expression with the type OtherProps
+const OtherHeading: React.FC<OtherProps> = ({ name, color }) => (
+  <h1>My Website Heading</h1>
+)
+```
+
+source: [Sitepoint](https://www.sitepoint.com/react-with-typescript-best-practices/)
+
+<GoTo rule="1" title="Start Again" />

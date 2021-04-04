@@ -1,0 +1,111 @@
+---
+title: "Rule #2"
+path: "/rule-2"
+---
+
+import Button from "../components/button.js"
+import GoTo from "../components/changePage.js"
+
+# 2. Use `useContext` if you want to share something with your components!
+
+> Context is designed to share data that can be considered “global” for a tree of React components, such as the current authenticated user, theme, or preferred language.
+
+source: [React](https://reactjs.org/docs/context.html#when-to-use-context)
+
+<br />
+
+With `useContext`:
+
+```jsx
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee",
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222",
+  },
+}
+
+const ThemeContext = React.createContext(themes.light)
+
+function App() {
+  return (
+    <ThemeContext.Provider value={themes.dark}>
+      <ComponentA />
+      <ComponentA />
+      <ComponentA />
+
+      <ComponentB />
+      <ComponentB />
+    </ThemeContext.Provider>
+  )
+}
+
+function ComponentA() {
+  const theme = useContext(ThemeContext)
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </button>
+  )
+}
+
+function ComponentB() {
+  const theme = useContext(ThemeContext)
+  return (
+    <p style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </p>
+  )
+}
+```
+
+<br />
+
+Without `useContext`:
+
+```jsx
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee",
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222",
+  },
+}
+
+function App() {
+  return (
+    <>
+      <ComponentA theme={themes.dark} />
+      <ComponentA theme={themes.dark} />
+      <ComponentA theme={themes.dark} />
+
+      <ComponentB theme={themes.dark} />
+      <ComponentB theme={themes.dark} />
+    </>
+  )
+}
+
+function ComponentA({ theme }) {
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </button>
+  )
+}
+
+function ComponentB({ theme }) {
+  return (
+    <p style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </p>
+  )
+}
+```
+
+<GoTo rule="3" />

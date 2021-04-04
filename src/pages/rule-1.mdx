@@ -1,0 +1,125 @@
+---
+title: "Rule #1"
+path: "/rule-1"
+---
+
+import GoTo from "../components/changePage"
+import Example from "../components/use-reducer"
+import Container from "../components/react-component-holder"
+
+# 1. Unless your logic is super simple, choose `useReducer` over `useState`
+
+- ### Easier to manage
+- ### Easier and more efficient to pass as a prop
+
+<br />
+
+With `useState`:
+
+```jsx
+import React, { useState } from "react"
+
+export default () => {
+  const max = 100
+  const min = 0
+  const [counter, setCounter] = useState(0)
+
+  const increment = () => {
+    setCounter(counter === max ? max : counter + 1)
+  }
+  const decrement = () => {
+    setCounter(counter === min ? min : counter - 1)
+  }
+  const setToMin = () => {
+    setCounter(min)
+  }
+  const setToMax = () => {
+    setCounter(max)
+  }
+  return (
+    <section>
+      <h2>Counter value: {counter}</h2>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={setToMin}>Set to min</button>
+      <button onClick={setToMax}>Set to max</button>
+
+      <ComponentA
+        increment={increment}
+        decrement={decrement}
+        setToMin={setToMin}
+        setToMax={setToMax}
+      />
+
+      <ComponentB
+        increment={increment}
+        decrement={decrement}
+        setToMin={setToMin}
+        setToMax={setToMax}
+      />
+    </section>
+  )
+}
+```
+
+<br />
+
+With `useReducer`:
+
+```jsx
+import React, { useReducer } from "react"
+
+export default () => {
+  const max = 100
+  const min = 0
+
+  const counterReducer = (state, action) => {
+    switch (action.type) {
+      case "INCREMENT":
+        if (state === max) return max
+        return state + 1
+
+      case "DECREMENT":
+        if (state === min) return min
+        return state - 1
+
+      case "SET_TO_MIN":
+        return min
+
+      case "SET_TO_MAX":
+        return max
+
+      default:
+        return state
+    }
+  }
+  const [counter, dispatch] = useReducer(counterReducer, min)
+
+  return (
+    <section>
+      <h2>Counter value: {counter}</h2>
+      <button onClick={() => dispatch({ type: "INCREMENT" })}>Increment</button>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}>Decrement</button>
+      <button onClick={() => dispatch({ type: "SET_TO_MIN" })}>
+        Set to min
+      </button>
+      <button onClick={() => dispatch({ type: "SET_TO_MAX" })}>
+        Set to max
+      </button>
+
+      <ComponentA dispatch={dispatch} />
+      <ComponentB dispatch={dispatch} />
+    </section>
+  )
+}
+```
+
+<br />
+<Container>
+  <Example />
+</Container>
+<br />
+
+Learn more on [React's website](https://reactjs.org/docs/hooks-reference.html).
+
+<GoTo rule="2" />
