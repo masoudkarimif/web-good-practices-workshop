@@ -1,6 +1,6 @@
 ---
 title: "Rule #5"
-description: "Using useMemo"
+description: "Rule #5: Consider using useMemo for expensive operations!"
 path: "/rule-5"
 ---
 
@@ -8,7 +8,13 @@ import MemoExample from "../components/useMemoExample"
 import ComponentHolder from "../components/react-component-holder"
 import GoTo from "../components/changePage"
 
-# 5. Consider using `useMemo` for expensive operations
+# 5. Consider using `useMemo` for expensive operations!
+
+> Pass a “create” function and an array of dependencies. useMemo will only recompute the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.
+
+source: [React](https://reactjs.org/docs/hooks-reference.html)
+
+<br />
 
 ### Example:
 
