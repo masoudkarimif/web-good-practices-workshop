@@ -1,11 +1,12 @@
-import React from 'react'
-import {Link} from 'gatsby'
+import React from "react"
+import { Link } from "gatsby"
 
-
-const NavItem = ({to, name}) => {
-	return (
-		  <Link className="page-link" to={to}>{name}</Link>
-	)
+const NavItem = ({ to, name, active }) => {
+  return (
+    <Link className={`page-link ${active ? "selected" : ""}`} to={to}>
+      {name}
+    </Link>
+  )
 }
 
-export default NavItem;
+export default NavItem

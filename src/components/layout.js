@@ -33,7 +33,7 @@ const Layout = ({ pageContext, children, className = "page" }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const { title, description } = pageContext.frontmatter
+  const { title, description, path } = pageContext.frontmatter
 
   return (
     <>
@@ -48,7 +48,7 @@ const Layout = ({ pageContext, children, className = "page" }) => {
           <Link className="site-title" to="/">
             {blog_name}
           </Link>
-          <Nav />
+          <Nav currentRoute={path} />
         </div>
         {className === "article" && scrollVisibility ? (
           <div className="progress-bar" style={{ width: scroll + "%" }} />

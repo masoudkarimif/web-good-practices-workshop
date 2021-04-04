@@ -1,7 +1,9 @@
 import React from "react"
 import NavItem from "./nav-item"
 
-function Nav() {
+const dummyArr = Array(10).fill(0)
+
+function Nav({ currentRoute }) {
   return (
     <nav className="site-nav">
       <input type="checkbox" id="nav-trigger" className="nav-trigger" />
@@ -14,16 +16,13 @@ function Nav() {
       </label>
 
       <div className="trigger">
-        <NavItem name="Rule #1" to="/rule-1/" />
-        <NavItem name="Rule #2" to="/rule-2/" />
-        <NavItem name="Rule #3" to="/rule-3/" />
-        <NavItem name="Rule #4" to="/rule-4/" />
-        <NavItem name="Rule #5" to="/rule-5/" />
-        <NavItem name="Rule #6" to="/rule-6/" />
-        <NavItem name="Rule #7" to="/rule-7/" />
-        <NavItem name="Rule #8" to="/rule-8/" />
-        <NavItem name="Rule #9" to="/rule-9/" />
-        <NavItem name="Rule #10" to="/rule-10/" />
+        {dummyArr.map((item, idx) => (
+          <NavItem
+            name={`Rule #${idx + 1}`}
+            to={`/rule-${idx + 1}`}
+            active={`/rule-${idx + 1}` === currentRoute}
+          />
+        ))}
       </div>
     </nav>
   )
