@@ -136,11 +136,5 @@ module.exports = {
     // 	path: `${__dirname}/src/markdown-pages`,
     //  },
     // },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/images`,
-      },
-    },
   ],
 }
